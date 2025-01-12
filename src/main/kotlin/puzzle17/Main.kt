@@ -38,7 +38,7 @@ class Solution {
     }
 
 
-    private fun run(inst: Instruction, outputs: MutableList<Int>) {
+    private fun exec(inst: Instruction, outputs: MutableList<Int>) {
         when (inst.code) {
             0 -> {
                 registers[0] =
@@ -79,15 +79,15 @@ class Solution {
         pointer++
     }
 
-    private fun start(): List<Int> {
+    private fun run(): List<Int> {
         pointer = 0
         val outputs: MutableList<Int> = mutableListOf()
-        while (pointer < program.size) run(program[pointer], outputs)
+        while (pointer < program.size) exec(program[pointer], outputs)
         return outputs
     }
 
     fun part1(): String {
-        return start().joinToString(",")
+        return run().joinToString(",")
     }
 
     private fun base8ToLong(base8Input: List<Int>): Long {
@@ -97,15 +97,12 @@ class Solution {
     }
 
     private fun solve(registerA: MutableList<Int>, digitIdx: Int): Boolean {
-        if (digitIdx == -1) {
-            return true
-        }
         for (guess in 0..7) {
             registerA[digitIdx] = guess
             registers[0] = base8ToLong(registerA)
             val doneSize = 16 - digitIdx
-            if (start().takeLast(doneSize) == opcodes.takeLast(doneSize))
-                if (solve(registerA, digitIdx - 1))
+            if (run().takeLast(doneSize) == opcodes.takeLast(doneSize))
+                if (digitIdx == 0 || solve(registerA, digitIdx - 1))
                     return true
         }
         return false
