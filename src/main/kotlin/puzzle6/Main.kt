@@ -49,7 +49,7 @@ fun part2(): Int {
 
     object {}.javaClass.getResourceAsStream("input.txt")!!.bufferedReader().useLines {
         val data = it.toList()
-        fun isCycle(data: List<String>, start: Point, extraY: Int, extraX: Int): Boolean {
+        fun isCycle(start: Point, extraY: Int, extraX: Int): Boolean {
             val visited: MutableSet<Point> = mutableSetOf()
             var p: Point? = start
             while (p != null) {
@@ -76,7 +76,7 @@ fun part2(): Int {
             if (p == null) {
                 break
             }
-            if (!found.contains(Pair(p!!.y, p!!.x)) && isCycle(data, start, p!!.y, p!!.x)) {
+            if (!found.contains(Pair(p!!.y, p!!.x)) && isCycle(start, p!!.y, p!!.x)) {
                 found += Pair(p!!.y, p!!.x)
             }
             visited.add(p!!)
