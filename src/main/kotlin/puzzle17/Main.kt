@@ -5,16 +5,12 @@ import kotlin.math.pow
 data class Instruction(val code: Int, val op: Operand)
 
 data class Operand(val opcode: Int) {
-    fun asCombo(registers: List<Long>): Long {
-        return when (opcode) {
-            in 0..3 -> opcode.toLong()
-            else -> registers[opcode - 4]
-        }
+    fun asCombo(registers: List<Long>): Long = when (opcode) {
+        in 0..3 -> opcode.toLong()
+        else -> registers[opcode - 4]
     }
 
-    fun asLiteral(): Int {
-        return opcode
-    }
+    fun asLiteral(): Int = opcode
 }
 
 class Solution {
@@ -86,14 +82,10 @@ class Solution {
         return outputs
     }
 
-    fun part1(): String {
-        return run().joinToString(",")
-    }
+    fun part1(): String = run().joinToString(",")
 
-    private fun base8ToLong(base8Input: List<Int>): Long {
-        return base8Input.foldIndexed(0L) { idx, acc, value ->
-            acc + value * 8.0.pow(idx).toLong()
-        }
+    private fun base8ToLong(base8: List<Int>): Long = base8.foldIndexed(0L) { idx, acc, value ->
+        acc + value * 8.0.pow(idx).toLong()
     }
 
     private fun solve(registerA: MutableList<Int>, digitIdx: Int): Boolean {
