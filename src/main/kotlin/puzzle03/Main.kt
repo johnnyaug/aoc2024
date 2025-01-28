@@ -1,6 +1,4 @@
-package puzzle3
-
-import kotlin.math.abs
+package puzzle03
 
 fun part1(): Int {
     object {}.javaClass.getResourceAsStream("input.txt")!!.bufferedReader().useLines {

@@ -1,4 +1,4 @@
-package puzzle6
+package puzzle06
 
 fun get(data: List<String>, y: Int, x: Int): Char? {
     return data.getOrNull(y)?.getOrNull(x)

@@ -1,4 +1,4 @@
-package puzzle5
+package puzzle05
 
 import java.io.Reader
 

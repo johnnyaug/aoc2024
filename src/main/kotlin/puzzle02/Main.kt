@@ -1,4 +1,4 @@
-package puzzle2
+package puzzle02
 
 import kotlin.math.abs
 

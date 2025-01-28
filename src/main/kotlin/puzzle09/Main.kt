@@ -1,4 +1,4 @@
-package puzzle9
+package puzzle09
 
 fun sumSequence(first: Long, l: Long): Long {
     return (2 * first + l - 1) * l / 2

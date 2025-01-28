@@ -1,4 +1,4 @@
-package puzzle8
+package puzzle08
 
 data class Point(val y: Int, val x: Int, val c: Char)
 

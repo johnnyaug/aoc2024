@@ -1,4 +1,4 @@
-package puzzle4
+package puzzle04
 
 fun part1(): Int {
     var s = 0

@@ -1,4 +1,4 @@
-package puzzle7
+package puzzle07
 
 fun getChildren(ways: List<Long>, i: Int, current: Long, part: Int) : List<Long> {
     if (part == 1) {
